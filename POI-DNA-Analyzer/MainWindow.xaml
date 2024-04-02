@@ -15,7 +15,7 @@
 
         <TextBlock x:Name="ResultText" Margin="400,10,10,49" TextWrapping="Wrap" Text="Result is gonna be here..." FontSize="14"/>
 
-        <Button x:Name="OpenFile" Content="File" Click="OpenFileButtonClick" Margin="10,0,0,10" HorizontalAlignment="Left" Width="79" Height="29" VerticalAlignment="Bottom"/>
+        <Button x:Name="OpenFileButton" Content="File" Click="OpenFileButtonClick" Margin="10,0,0,10" HorizontalAlignment="Left" Width="79" Height="29" VerticalAlignment="Bottom"/>
         <Button x:Name="EnterPrompt" Content="Find!" Click="EnterPromptButtonClick" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" Height="21" Width="41"/>
     </Grid>
 </Window>

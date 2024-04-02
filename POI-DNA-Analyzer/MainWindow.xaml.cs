@@ -10,6 +10,7 @@ namespace POI_DNA_Analyzer
 	public partial class MainWindow : Window
 	{
 		private StreamReader _fileStream;
+		private string _filePath = "";
 		private ResultText _resultText;
 
 		public MainWindow()
@@ -26,9 +27,10 @@ namespace POI_DNA_Analyzer
 		private void OpenFileButtonClick(object sender, RoutedEventArgs e)
 		{
 			FilePicker filePicker = new FilePicker();
-			FileOpener fileOpener = new FileOpener();
 
-			_fileStream = fileOpener.OpenFile(filePicker.PickFilePath());
+			_filePath = filePicker.PickFilePath();
+
+			OpenFile();
 		}
 
 		private void EnterPromptButtonClick(object sender, RoutedEventArgs e)
@@ -40,11 +42,23 @@ namespace POI_DNA_Analyzer
 			int result = sequencesFinder.CountOccurrences(_fileStream.ReadToEnd(), PromptField.Text);
 
 			_resultText.ShowOccurrencesCount(result.ToString());
+
+			OpenFile();
 		}
 
 		private void PromptChanged(object sender, TextChangedEventArgs e)
 		{
 
+		}
+
+		private void OpenFile()
+		{
+			if (_fileStream != null)
+				_fileStream.Close();
+
+			FileOpener fileOpener = new FileOpener();
+
+			_fileStream = fileOpener.OpenFile(_filePath);
 		}
 	}
 }
