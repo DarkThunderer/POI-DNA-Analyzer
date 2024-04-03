@@ -1,6 +1,8 @@
 # Ignore Visual Studio files
 .vs/
-POI-DNA-Analyzer/bin/
 
 # Ignore solution files
 *.sln
+
+# Ignore bin
+/POI-DNA-Analyzer/bin/
