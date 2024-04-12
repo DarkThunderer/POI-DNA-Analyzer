@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.IO;
 
 namespace POI_DNA_Analyzer
 {

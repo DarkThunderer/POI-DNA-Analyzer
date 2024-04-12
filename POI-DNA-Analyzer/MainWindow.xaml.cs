@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace POI_DNA_Analyzer
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class MainWindow : Window
 	{
 		private StreamReader _fileStream;
@@ -33,15 +30,22 @@ namespace POI_DNA_Analyzer
 			OpenFile();
 		}
 
+		private void SaveFileButtonClick(object sender, RoutedEventArgs e)
+		{
+			ResultSaver resultSaver = new ResultSaver();
+			resultSaver.Save(ResultText.Text);
+		}
+
 		private void EnterPromptButtonClick(object sender, RoutedEventArgs e)
 		{
 			if (_fileStream == null)
 				return;
 
 			SequencesFinder sequencesFinder = new SequencesFinder();
-			int result = sequencesFinder.CountOccurrences(_fileStream.ReadToEnd(), PromptField.Text);
+			int result = sequencesFinder.GetOccurrencesCount(_fileStream.ReadToEnd(), PromptField.Text);
 
 			_resultText.ShowOccurrencesCount(result.ToString());
+			_resultText.ShowOccurrencesIndexes(sequencesFinder.SequenceIndexes);
 
 			OpenFile();
 		}
