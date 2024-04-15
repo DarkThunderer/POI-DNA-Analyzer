@@ -7,13 +7,18 @@ namespace POI_DNA_Analyzer
 	public partial class MainWindow : Window
 	{
 		private StreamReader _fileStream;
-		private string _filePath = "";
 		private ResultText _resultText;
+		private ListOfIndexes _listOfIndexes;
+		private SequencesFinder _sequencesFinder;
+
+		private string _filePath = "";
 
 		public MainWindow()
 		{
 			InitializeComponent();
 			_resultText = new ResultText(ResultText);
+			_listOfIndexes = new ListOfIndexes(List);
+			_sequencesFinder = new SequencesFinder();
 		}
 
 		private void FindButtonClick(object sender, RoutedEventArgs e)
@@ -33,7 +38,7 @@ namespace POI_DNA_Analyzer
 		private void SaveFileButtonClick(object sender, RoutedEventArgs e)
 		{
 			ResultSaver resultSaver = new ResultSaver();
-			resultSaver.Save(ResultText.Text);
+			resultSaver.Save(ResultText.Text, _sequencesFinder.SequenceIndexes);
 		}
 
 		private void EnterPromptButtonClick(object sender, RoutedEventArgs e)
@@ -41,13 +46,18 @@ namespace POI_DNA_Analyzer
 			if (_fileStream == null)
 				return;
 
-			SequencesFinder sequencesFinder = new SequencesFinder();
-			int result = sequencesFinder.GetOccurrencesCount(_fileStream.ReadToEnd(), PromptField.Text);
+			int result = _sequencesFinder.GetOccurrencesCount(_fileStream.ReadToEnd(), PromptField.Text);
 
 			_resultText.ShowOccurrencesCount(result.ToString());
-			_resultText.ShowOccurrencesIndexes(sequencesFinder.SequenceIndexes);
+			_listOfIndexes.ShowOccurrencesIndexes(_sequencesFinder.SequenceIndexes);
 
 			OpenFile();
+		}
+
+		private void ClearResultButtonClick(object sender, RoutedEventArgs e)
+		{
+			_resultText.Clear();
+			_listOfIndexes.Clear();
 		}
 
 		private void PromptChanged(object sender, TextChangedEventArgs e)

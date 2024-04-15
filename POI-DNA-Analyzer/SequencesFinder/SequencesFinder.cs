@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace POI_DNA_Analyzer
+﻿namespace POI_DNA_Analyzer
 {
 	internal class SequencesFinder
 	{
@@ -17,7 +15,6 @@ namespace POI_DNA_Analyzer
 			while ((index = source.IndexOf(sequenceToFind, index, StringComparison.OrdinalIgnoreCase)) != -1)
 			{
 				SequenceIndexes.AddLast(index);
-				//Indexes += index + ",";
 
 				index += sequenceToFind.Length;
 				count++;
