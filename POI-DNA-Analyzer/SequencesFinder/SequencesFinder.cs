@@ -2,8 +2,9 @@
 {
 	internal class SequencesFinder
 	{
-		public LinkedList<int> SequenceIndexes = new LinkedList<int>();
-		public string Indexes = "";
+		public LinkedList<int> SequenceIndexes { get; private set; } = new LinkedList<int>();
+		
+		public string Indexes { get; private set; } = "";
 
 		public int GetOccurrencesCount(string source, string sequenceToFind)
 		{
