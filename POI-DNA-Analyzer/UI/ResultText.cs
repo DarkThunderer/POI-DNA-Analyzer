@@ -12,7 +12,7 @@ namespace POI_DNA_Analyzer
 			_textBlock = textBlock;
 		}
 
-		 public void Show(StreamReader streamReader)
+		public void Show(StreamReader streamReader)
 		{
 			if (streamReader == null)
 				return;
@@ -20,12 +20,12 @@ namespace POI_DNA_Analyzer
 			_textBlock.Text = streamReader.ReadToEnd();
 		}
 
-		 public void Clear()
+		public void Clear()
 		{
 			_textBlock.Text = "";
 		}
 
-		 public void ShowOccurrencesCount(string text)
+		public void ShowOccurrencesCount(string text)
 		{
 			_textBlock.Text = $"Occurrences count: {text}";
 		}
