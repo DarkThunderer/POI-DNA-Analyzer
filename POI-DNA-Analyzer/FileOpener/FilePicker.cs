@@ -4,8 +4,8 @@ namespace POI_DNA_Analyzer
 {
 	internal class FilePicker
     {
-        public string PickFilePath()
-        {
+		public string PickFilePath()
+		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 
 			if (openFileDialog.ShowDialog() == true)
@@ -13,5 +13,5 @@ namespace POI_DNA_Analyzer
 			else
 				return "";
 		}
-    }
+	}
 }

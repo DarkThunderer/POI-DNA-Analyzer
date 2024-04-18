@@ -2,8 +2,8 @@
 
 namespace POI_DNA_Analyzer
 {
-    class ListOfIndexes
-    {
+	class ListOfIndexes
+	{
 		private ListBox _listBox;
 
 		public ListOfIndexes(ListBox listBox)
