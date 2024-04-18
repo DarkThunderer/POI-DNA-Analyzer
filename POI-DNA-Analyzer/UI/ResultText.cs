@@ -14,7 +14,7 @@ namespace POI_DNA_Analyzer
 
 		 public void Show(StreamReader streamReader)
 		{
-			 if (streamReader == null)
+			if (streamReader == null)
 				return;
 
 			_textBlock.Text = streamReader.ReadToEnd();
@@ -22,7 +22,7 @@ namespace POI_DNA_Analyzer
 
 		 public void Clear()
 		{
-		_textBlock.Text = "";
+			_textBlock.Text = "";
 		}
 
 		 public void ShowOccurrencesCount(string text)
