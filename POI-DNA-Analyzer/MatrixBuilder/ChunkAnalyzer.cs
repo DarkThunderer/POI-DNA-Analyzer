@@ -2,53 +2,56 @@
 {
 	internal class ChunkAnalyzer
 	{
-		public Dictionary<string, int> Pairs { get; private set; } = new Dictionary<string, int>();
-
 		public ChunkAnalyzer()
 		{
-			Pairs.Add("AA", 0);
-			Pairs.Add("AG", 0);
-			Pairs.Add("AC", 0);
-			Pairs.Add("AT", 0);
-
-			Pairs.Add("GA", 0);
-			Pairs.Add("GG", 0);
-			Pairs.Add("GC", 0);
-			Pairs.Add("GT", 0);
-
-			Pairs.Add("CA", 0);
-			Pairs.Add("CG", 0);
-			Pairs.Add("CC", 0);
-			Pairs.Add("CT", 0);
-
-			Pairs.Add("TA", 0);
-			Pairs.Add("TG", 0);
-			Pairs.Add("TC", 0);
-			Pairs.Add("TT", 0);
+			InitializeDictionaries();
 		}
+
+		public Dictionary<string, int> DinucleotidesCount { get; private set; } = new Dictionary<string, int>();
+
+		public Dictionary<char, int> NucleotidesCount { get; private set; } = new Dictionary<char, int>();
 
 		public void AnalyzeChunk(string chunk)
 		{
-			ClearPairs();
+			ClearDictionaries();
 
 			for (int i = 0; i < chunk.Length - 1; i++)
 			{
 				string pair = chunk[i].ToString() + chunk[i + 1].ToString();
 
-				HandlePair(pair);
+				CountDinucleotide(pair);
+				CountNucleotide(pair[0]);
 			}
 		}
 
-		private void HandlePair(string pair)
+		private void CountDinucleotide(string dinucleotide)
 		{
-			if (Pairs.ContainsKey(pair))
-				Pairs[pair]++;
+			if (DinucleotidesCount.ContainsKey(dinucleotide))
+				DinucleotidesCount[dinucleotide]++;
 		}
 
-		private void ClearPairs()
+		private void CountNucleotide(char letter)
 		{
-			foreach (string key in Pairs.Keys.ToList())
-				Pairs[key] = 0;
+			if (NucleotidesCount.ContainsKey(letter))
+				NucleotidesCount[letter]++;
+		}
+
+		private void ClearDictionaries()
+		{
+			foreach (string key in DinucleotidesCount.Keys.ToList())
+				DinucleotidesCount[key] = 0;
+
+			foreach (char key in new NucleotidesList().Get)
+				NucleotidesCount[key] = 0;
+		}
+
+		private void InitializeDictionaries()
+		{
+			foreach (string key in new DinucleotidesList().Get)
+				DinucleotidesCount.Add(key, 0);
+
+			foreach (char key in new NucleotidesList().Get)
+				NucleotidesCount.Add(key, 0);
 		}
 	}
 }
