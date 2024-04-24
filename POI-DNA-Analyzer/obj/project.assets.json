@@ -8,23 +8,23 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Anton\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\AHTOH\\.nuget\\packages\\": {},
+    "C:\\Files\\Programs\\Visual Studio 2019\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Education\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer.csproj",
+      "projectUniqueName": "C:\\Files\\Projects\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer.csproj",
       "projectName": "POI-DNA-Analyzer",
-      "projectPath": "D:\\Projects\\Education\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer.csproj",
-      "packagesPath": "C:\\Users\\Anton\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Education\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\obj\\",
+      "projectPath": "C:\\Files\\Projects\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\POI-DNA-Analyzer.csproj",
+      "packagesPath": "C:\\Users\\AHTOH\\.nuget\\packages\\",
+      "outputPath": "C:\\Files\\Projects\\POI-DNA-Analyzer\\POI-DNA-Analyzer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Files\\Programs\\Visual Studio 2019\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AHTOH\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -75,7 +74,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

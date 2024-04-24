@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = POI_DNA_Analyzer
-build_property.ProjectDir = D:\Projects\Education\POI-DNA-Analyzer\POI-DNA-Analyzer\POI-DNA-Analyzer\
+build_property.ProjectDir = C:\Files\Projects\POI-DNA-Analyzer\POI-DNA-Analyzer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
