@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+		xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
         Title="POI-DNA-Analyzer" Height="479" Width="823" WindowStyle="ThreeDBorderWindow">
 
@@ -44,9 +46,41 @@
 						<TextBlock Margin="3">Dinucleotides Analyzer</TextBlock>
 					</StackPanel>
 				</TabItem.Header>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<CheckBox Margin="177,106,0,0" VerticalAlignment="Top" Height="17" Checked="f" Padding="0,-1,0,0" HorizontalAlignment="Left" Width="17"/>
+
+					<TextBlock x:Name="ChunkSize" Margin="10,10,0,0" TextWrapping="Wrap" Text="Chunk size:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="94"/>
+					<TextBox Margin="150,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
+					<TextBlock Margin="10,104,0,0" TextWrapping="Wrap" Text="Save intermediate results:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="162"/>
+
+					<Button x:Name="StartButton" Content="Start" Margin="0,0,10,10" Click="SaveFileButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1" />
+					<Slider Margin="150,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+					<TextBlock Margin="10,36,0,0" TextWrapping="Wrap" Text="Similarity coefficient:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="126"/>
+
+					<TextBox Margin="150,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="148"/>
+					<Button Content="..." Margin="303,76,0,0" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="21"/>
+					<TextBlock Margin="10,76,0,0" TextWrapping="Wrap" Text="Save path:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="134"/>
+
+					<ProgressBar Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>
+
+					<ScottPlot:WpfPlot x:Name="WpfPlot1" VerticalAlignment="Top" Height="150" Grid.ColumnSpan="2" Margin="408,0,0,0"/>
+					<!--<Grid Margin="10,155,0,0" Grid.Column="1">
+						<Button Content="AN" HorizontalAlignment="Left" Height="30" Width="30" Margin="50,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="CN" HorizontalAlignment="Left" Height="30" Width="30" Margin="150,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="TN" HorizontalAlignment="Left" Height="30" Width="30" Margin="250,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="GN" HorizontalAlignment="Left" Height="30" Width="30" Margin="350,0,0,0" VerticalAlignment="Top"/>
+					</Grid>-->
+
+					<oxy:PlotView x:Name="OxyPlot" Model="{Binding SomeName}" Margin="408,150,0,118" Grid.ColumnSpan="2"/>
+				</Grid>
 			</TabItem>
 		</TabControl>
 
-		<Button x:Name="OpenFileButton" Content="File" Click="OpenFileButtonClick" Margin="10,0,0,10" HorizontalAlignment="Left" Width="79" Height="29" VerticalAlignment="Bottom"/>
+		<Button x:Name="OpenFileButton" Content="File" Click="OpenFileButtonClick" Margin="13,0,0,13" HorizontalAlignment="Left" Width="79" Height="29" VerticalAlignment="Bottom"/>
 	</Grid>
 </Window>
