@@ -1,4 +1,6 @@
-﻿namespace POI_DNA_Analyzer
+﻿using System.Diagnostics;
+
+namespace POI_DNA_Analyzer
 {
 	internal class ChunkMatrixBuilder
 	{
@@ -34,6 +36,9 @@
 		private float CalculateProbability(string dinucleotide)
 		{
 			char nucleotide = dinucleotide[0];
+
+			if (_chunkAnalyzer.NucleotidesCount[nucleotide] == 0)
+				return 0;
 
 			float result = (float)_chunkAnalyzer.DinucleotidesCount[dinucleotide] / _chunkAnalyzer.NucleotidesCount[nucleotide];
 
