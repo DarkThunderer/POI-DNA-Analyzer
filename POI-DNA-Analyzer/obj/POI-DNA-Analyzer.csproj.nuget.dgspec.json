@@ -53,10 +53,6 @@
             "OxyPlot.Wpf": {
               "target": "Package",
               "version": "[2.1.2, )"
-            },
-            "ScottPlot.WPF": {
-              "target": "Package",
-              "version": "[5.0.31, )"
             }
           },
           "imports": [
@@ -78,7 +74,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

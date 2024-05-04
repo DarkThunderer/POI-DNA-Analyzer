@@ -16,22 +16,16 @@ namespace POI_DNA_Analyzer
 		public MainWindow()
 		{
 			InitializeComponent();
+
 			_resultText = new ResultText(ResultText);
 			_listOfIndexes = new ListOfIndexes(List);
 			_sequencesFinder = new SequencesFinder();
 
-			ScottPlotProbabilityGraph dinucleotidesGraph = new ScottPlotProbabilityGraph(WpfPlot1);
-			dinucleotidesGraph.Show(new int[]{ 1, 2, 3, 4, 5 }, new double[]{ 0.52, 0.73, 0.28, 0.89, 0.41 }, System.Drawing.Color.Red);
-			dinucleotidesGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.14, 0.67, 0.92, 0.36, 0.75 }, System.Drawing.Color.Green);
-			dinucleotidesGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.81, 0.25, 0.63, 0.49, 0.97 }, System.Drawing.Color.Blue);
-			dinucleotidesGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.33, 0.68, 0.17, 0.94, 0.55 }, System.Drawing.Color.Orange);
-
-			InitializeComponent();
 			OxyPlotProbabilityGraph oxyPlotProbabilityGraph = new OxyPlotProbabilityGraph(OxyPlot);
-			oxyPlotProbabilityGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.52, 0.73, 0.28, 0.89, 0.41 }, System.Drawing.Color.Red);
-			oxyPlotProbabilityGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.14, 0.67, 0.92, 0.36, 0.75 }, System.Drawing.Color.Green);
-			oxyPlotProbabilityGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.81, 0.25, 0.63, 0.49, 0.97 }, System.Drawing.Color.Blue);
-			oxyPlotProbabilityGraph.Show(new int[] { 1, 2, 3, 4, 5 }, new double[] { 0.33, 0.68, 0.17, 0.94, 0.55 }, System.Drawing.Color.Orange);
+			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 52, 73, 28, 89, 41 }, System.Drawing.Color.Red);
+			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 14, 67, 92, 36, 75 }, System.Drawing.Color.Green);
+			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 81, 25, 63, 49, 97 }, System.Drawing.Color.Blue);
+			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 33, 68, 17, 94, 55 }, System.Drawing.Color.Orange);
 			oxyPlotProbabilityGraph.Show();
 		}
 
@@ -89,12 +83,12 @@ namespace POI_DNA_Analyzer
 			_fileStream = fileOpener.OpenFile(_filePath);
 		}
 
-		private void f(object sender, RoutedEventArgs e)
+		private void CheckboxChecked(object sender, RoutedEventArgs e)
 		{
 
         }
 
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		private void SavePathChanged(object sender, TextChangedEventArgs e)
 		{
 
 		}
