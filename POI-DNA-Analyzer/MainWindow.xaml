@@ -54,10 +54,10 @@
 					<CheckBox Margin="177,106,0,0" VerticalAlignment="Top" Height="17" Checked="CheckboxChecked" Padding="0,-1,0,0" HorizontalAlignment="Left" Width="17"/>
 
 					<TextBlock x:Name="ChunkSize" Margin="10,10,0,0" TextWrapping="Wrap" Text="Chunk size:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="94"/>
-					<TextBox Margin="150,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
+					<TextBox x:Name="ChunkSizeTextBox" Margin="150,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
 					<TextBlock Margin="10,104,0,0" TextWrapping="Wrap" Text="Save intermediate results:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="162"/>
 
-					<Button x:Name="StartButton" Content="Start" Margin="0,0,10,10" Click="SaveFileButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1" />
+					<Button x:Name="StartButton" Content="Start" Margin="0,0,10,10" Click="StartDinucleotidesAnalyzerButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1" />
 					<Slider Margin="150,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
 					<TextBlock Margin="10,36,0,0" TextWrapping="Wrap" Text="Similarity coefficient:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="126"/>
 
@@ -65,7 +65,7 @@
 					<Button Content="..." Margin="303,76,0,0" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="21"/>
 					<TextBlock Margin="10,76,0,0" TextWrapping="Wrap" Text="Save path:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="134"/>
 
-					<ProgressBar Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>
+					<ProgressBar x:Name="DinucleotidesAnalyzerProgressBar" Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>
 
 					<Grid Margin="10,155,0,0" Grid.Column="1">
 						<Button Content="AN" HorizontalAlignment="Left" Height="30" Width="30" Margin="50,0,0,0" VerticalAlignment="Top"/>

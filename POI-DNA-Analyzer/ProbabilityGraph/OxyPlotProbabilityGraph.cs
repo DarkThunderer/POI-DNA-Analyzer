@@ -45,7 +45,7 @@ namespace POI_DNA_Analyzer
 			_model.Series.Clear();
 		}
 
-		public void ProvideData(int[] chunks, double[] probabilities, Color color)
+		public void ProvideData(List<double> probabilities, Color color)
 		{
 			LineSeries series = new LineSeries
 			{
@@ -56,9 +56,9 @@ namespace POI_DNA_Analyzer
 				StrokeThickness = 2,
 			};
 
-			for (int i = 0; i < chunks.Length; i++)
+			for (int i = 0; i < probabilities.Count; i++)
 			{
-				series.Points.Add(new DataPoint(chunks[i], probabilities[i]));
+				series.Points.Add(new DataPoint(i + 1, probabilities[i]));
 			}
 
 			_model.Series.Add(series);

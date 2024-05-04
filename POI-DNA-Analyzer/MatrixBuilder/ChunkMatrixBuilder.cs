@@ -1,10 +1,10 @@
 ﻿namespace POI_DNA_Analyzer
 {
-	internal class MatrixBuilder
+	internal class ChunkMatrixBuilder
 	{
 		private ChunkAnalyzer _chunkAnalyzer;
 
-		public MatrixBuilder(ChunkAnalyzer chunkAnalyzer)
+		public ChunkMatrixBuilder(ChunkAnalyzer chunkAnalyzer)
 		{
 			_chunkAnalyzer = chunkAnalyzer;
 		}
@@ -21,6 +21,11 @@
 			}
 		}
 
+		private void ClearDinucleotidesProbabilities()
+		{
+			DinucleotidesProbabilities.Clear();
+		}
+
 		private void SetProbability(string dinucleotide)
 		{
 			DinucleotidesProbabilities.Add(dinucleotide, CalculateProbability(dinucleotide));
@@ -30,14 +35,9 @@
 		{
 			char nucleotide = dinucleotide[0];
 
-			float result = _chunkAnalyzer.DinucleotidesCount[dinucleotide] / _chunkAnalyzer.NucleotidesCount[nucleotide];
+			float result = (float)_chunkAnalyzer.DinucleotidesCount[dinucleotide] / _chunkAnalyzer.NucleotidesCount[nucleotide];
 
 			return result;
-		}
-
-		private void ClearDinucleotidesProbabilities()
-		{
-			DinucleotidesProbabilities.Clear();
 		}
 	}
 }

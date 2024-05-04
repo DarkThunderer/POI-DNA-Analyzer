@@ -2,7 +2,7 @@
 {
 	internal class DinucleotidesList
 	{
-		public List<string> Get { get; private set; }
+		public List<string> Get { get; private set; } = new List<string>();
 
 		public DinucleotidesList() 
 		{

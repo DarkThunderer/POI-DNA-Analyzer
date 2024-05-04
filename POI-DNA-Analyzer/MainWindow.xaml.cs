@@ -10,6 +10,8 @@ namespace POI_DNA_Analyzer
 		private ResultText _resultText;
 		private ListOfIndexes _listOfIndexes;
 		private SequencesFinder _sequencesFinder;
+		private DinucleotidesAnalyzer _dinucleotidesAnalzyer;
+		private DinucleotidesAnalyzerProgressBar _progressBar;
 
 		private string _filePath = "";
 
@@ -20,19 +22,16 @@ namespace POI_DNA_Analyzer
 			_resultText = new ResultText(ResultText);
 			_listOfIndexes = new ListOfIndexes(List);
 			_sequencesFinder = new SequencesFinder();
+			_dinucleotidesAnalzyer = new DinucleotidesAnalyzer();
+			_progressBar = new DinucleotidesAnalyzerProgressBar(DinucleotidesAnalyzerProgressBar); 
 
-			OxyPlotProbabilityGraph oxyPlotProbabilityGraph = new OxyPlotProbabilityGraph(OxyPlot);
-			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 52, 73, 28, 89, 41 }, System.Drawing.Color.Red);
-			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 14, 67, 92, 36, 75 }, System.Drawing.Color.Green);
-			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 81, 25, 63, 49, 97 }, System.Drawing.Color.Blue);
-			oxyPlotProbabilityGraph.ProvideData(new int[] { 1, 2, 3, 4, 5 }, new double[] { 33, 68, 17, 94, 55 }, System.Drawing.Color.Orange);
-			oxyPlotProbabilityGraph.Show();
+			_dinucleotidesAnalzyer.ChunkAnalyzed += _progressBar.Update;
 		}
 
 		private void FindButtonClick(object sender, RoutedEventArgs e)
 		{
 
-        }
+		}
 
 		private void OpenFileButtonClick(object sender, RoutedEventArgs e)
 		{
@@ -86,11 +85,26 @@ namespace POI_DNA_Analyzer
 		private void CheckboxChecked(object sender, RoutedEventArgs e)
 		{
 
-        }
+		}
 
 		private void SavePathChanged(object sender, TextChangedEventArgs e)
 		{
 
+		}
+
+		private void StartDinucleotidesAnalyzerButtonClick(object sender, RoutedEventArgs e)
+		{
+			if (_fileStream == null)
+				return;
+
+			_dinucleotidesAnalzyer.Analyze(_fileStream, 100);
+
+			OxyPlotProbabilityGraph oxyPlotProbabilityGraph = new OxyPlotProbabilityGraph(OxyPlot);
+
+			foreach (string key in _dinucleotidesAnalzyer.DinucleotidesProbabilities.Keys.ToList())
+				oxyPlotProbabilityGraph.ProvideData(_dinucleotidesAnalzyer.DinucleotidesProbabilities[key], System.Drawing.Color.Red);
+
+			oxyPlotProbabilityGraph.Show();
 		}
 	}
 }
