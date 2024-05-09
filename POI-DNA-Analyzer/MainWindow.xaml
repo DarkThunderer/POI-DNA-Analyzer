@@ -51,27 +51,28 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 
-					<CheckBox Margin="177,106,0,0" VerticalAlignment="Top" Height="17" Checked="CheckboxChecked" Padding="0,-1,0,0" HorizontalAlignment="Left" Width="17"/>
 
 					<TextBlock x:Name="ChunkSize" Margin="10,10,0,0" TextWrapping="Wrap" Text="Chunk size:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="94"/>
-					<TextBox x:Name="ChunkSizeTextBox" Margin="150,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
-					<TextBlock Margin="10,104,0,0" TextWrapping="Wrap" Text="Save intermediate results:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="162"/>
+					<TextBox x:Name="ChunkSizeTextBox" Text="100" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
 
 					<Button x:Name="StartButton" Content="Start" Margin="0,0,10,10" Click="StartDinucleotidesAnalyzerButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1" />
-					<Slider Margin="150,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
-					<TextBlock Margin="10,36,0,0" TextWrapping="Wrap" Text="Similarity coefficient:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="126"/>
+					<Slider x:Name="SimilaritySlider" Maximum="100" Value="80" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Margin="150,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+					<TextBox HorizontalAlignment="Left" Margin="329,37,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SimilaritySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="43"/>
+					<TextBlock Margin="10,36,0,0" TextWrapping="Wrap" Text="Similarity coefficient:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="140"/>
 
-					<TextBox Margin="150,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" TextChanged="SavePathChanged" HorizontalAlignment="Left" Width="148"/>
+					<!--<TextBox Margin="150,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" TextChanged="SavePathChanged" HorizontalAlignment="Left" Width="148"/>
+					<TextBlock Margin="10,104,0,0" TextWrapping="Wrap" Text="Save intermediate results:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="162"/>
+					<CheckBox Margin="177,106,0,0" VerticalAlignment="Top" Height="17" Checked="CheckboxChecked" Padding="0,-1,0,0" HorizontalAlignment="Left" Width="17"/>
 					<Button Content="..." Margin="303,76,0,0" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="21"/>
 					<TextBlock Margin="10,76,0,0" TextWrapping="Wrap" Text="Save path:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="134"/>
 
-					<ProgressBar x:Name="DinucleotidesAnalyzerProgressBar" Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>
+					<ProgressBar x:Name="DinucleotidesAnalyzerProgressBar" Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>-->
 
 					<Grid Margin="10,155,0,0" Grid.Column="1">
-						<Button Content="AN" HorizontalAlignment="Left" Height="30" Width="30" Margin="50,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="CN" HorizontalAlignment="Left" Height="30" Width="30" Margin="150,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="TN" HorizontalAlignment="Left" Height="30" Width="30" Margin="250,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="GN" HorizontalAlignment="Left" Height="30" Width="30" Margin="350,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="AN" Click="ShowAN" HorizontalAlignment="Left" Height="30" Width="30" Margin="50,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="CN" Click="ShowCN" HorizontalAlignment="Left" Height="30" Width="30" Margin="150,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="TN" Click="ShowTN" HorizontalAlignment="Left" Height="30" Width="30" Margin="250,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="GN" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="350,0,0,0" VerticalAlignment="Top"/>
 					</Grid>
 					<oxy:PlotView x:Name="OxyPlot" Model="{Binding SomeName}" VerticalAlignment="Top" Height="150" Grid.ColumnSpan="2" Margin="408,0,0,0"/>
 

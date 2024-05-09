@@ -1,27 +1,36 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 
 namespace POI_DNA_Analyzer
 {
 	internal class DinucleotidesAnalyzer
     {
-		public Action ChunkAnalyzed;
-
 		private ChunkAnalyzer _chunkAnalyzer;
 		private ChunkMatrixBuilder _chunkMatrixBuilder;
+		private MatrixComparator _matrixComparator;
+
+		private Dictionary<string, float> _lastMatrix = new Dictionary<string, float>();
+		private int _lastIndex;
 
 		public DinucleotidesAnalyzer() 
 		{
 			_chunkAnalyzer = new ChunkAnalyzer();
 			_chunkMatrixBuilder = new ChunkMatrixBuilder(_chunkAnalyzer);
+			_matrixComparator = new MatrixComparator();
 
 			InitializeDictionary();
 		}
 
 		public Dictionary<string, List<double>> DinucleotidesProbabilities { get; private set; } = new Dictionary<string, List<double>>();
 
-		public void Analyze(StreamReader fileStream, int chunkSize)
+		public List<int> Indexes { get; private set; } = new List<int> { };
+
+		public void Analyze(StreamReader fileStream, int chunkSize, double similarityCoefficient)
 		{
+			_lastIndex = 0;
 			ClearDictionary();
+			Indexes.Clear();
+			_lastMatrix.Clear();
 
 			char[] buffer = new char[chunkSize];
 			int charsRead;
@@ -32,7 +41,14 @@ namespace POI_DNA_Analyzer
 
 				_chunkAnalyzer.AnalyzeChunk(chunk);
 				_chunkMatrixBuilder.Build();
-				GetDataFromMatrix(_chunkMatrixBuilder.DinucleotidesProbabilities);
+
+				if (CanSkip(similarityCoefficient) == false)
+				{
+					GetDataFromMatrix(_chunkMatrixBuilder.DinucleotidesProbabilities);
+					Indexes.Add(_lastIndex);
+				}
+
+				_lastIndex++;
 
 				fileStream.BaseStream.Seek(chunkSize, SeekOrigin.Current);
 			}
@@ -62,6 +78,22 @@ namespace POI_DNA_Analyzer
 		{
 			foreach (string key in DinucleotidesProbabilities.Keys.ToList())
 				DinucleotidesProbabilities[key] = new List<double>();
+		}
+
+		private bool CanSkip(double similarityCoefficient)
+		{
+			if (_lastMatrix.Count == 0 || _lastMatrix == null)
+			{
+				_lastMatrix = new Dictionary<string, float>(_chunkMatrixBuilder.DinucleotidesProbabilities);
+
+				return false;
+			}
+
+			bool result = _matrixComparator.IsSimilar(_chunkMatrixBuilder.DinucleotidesProbabilities, _lastMatrix, similarityCoefficient);
+
+			_lastMatrix = new Dictionary<string, float>(_chunkMatrixBuilder.DinucleotidesProbabilities);
+
+			return result;
 		}
     }
 }
