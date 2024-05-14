@@ -4,6 +4,7 @@ using System.Drawing;
 using OxyPlot.Wpf;
 using OxyPlot.Axes;
 using OxyPlot.Legends;
+using OxyPlot.Annotations;
 
 namespace POI_DNA_Analyzer
 {
@@ -67,10 +68,15 @@ namespace POI_DNA_Analyzer
 				Title = name
 			};
 
+
 			for (int i = 0; i < probabilities.Count; i++)
 			{
-				series.Points.Add(new DataPoint(indexes[i] + 1, probabilities[i]));
+				DataPoint dataPoint = new DataPoint(i, probabilities[i]);
+				series.Points.Add(dataPoint);
+
 			}
+
+			EditXAxis(indexes);
 
 			_model.Series.Add(series);
 		}
@@ -80,6 +86,27 @@ namespace POI_DNA_Analyzer
 			_plotView.Model = _model;
 
 			_model.InvalidatePlot(true);
+		}
+
+		private void EditXAxis(List<int> indexes)
+		{
+			if (_model == null)
+				return;
+
+			LinearAxis xAxis = _model.Axes.OfType<LinearAxis>()
+				.FirstOrDefault(axis => axis.Position == AxisPosition.Bottom);
+
+			if (xAxis != null)
+			{
+				xAxis.MajorStep = 1;
+				xAxis.MinorStep = 1;
+				xAxis.LabelFormatter = value =>
+				{
+					return indexes[Convert.ToInt32(value)].ToString();
+				};
+
+				_plotView.InvalidatePlot();
+			}
 		}
 	}
 }

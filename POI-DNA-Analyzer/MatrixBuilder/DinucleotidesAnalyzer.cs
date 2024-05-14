@@ -27,7 +27,7 @@ namespace POI_DNA_Analyzer
 
 		public void Analyze(StreamReader fileStream, int chunkSize, double similarityCoefficient)
 		{
-			_lastIndex = 0;
+			_lastIndex = 1;
 			ClearDictionary();
 			Indexes.Clear();
 			_lastMatrix.Clear();

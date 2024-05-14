@@ -69,10 +69,34 @@
 					<ProgressBar x:Name="DinucleotidesAnalyzerProgressBar" Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>-->
 
 					<Grid Margin="10,155,0,0" Grid.Column="1">
-						<Button Content="AN" Click="ShowAN" HorizontalAlignment="Left" Height="30" Width="30" Margin="50,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="CN" Click="ShowCN" HorizontalAlignment="Left" Height="30" Width="30" Margin="150,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="TN" Click="ShowTN" HorizontalAlignment="Left" Height="30" Width="30" Margin="250,0,0,0" VerticalAlignment="Top"/>
-						<Button Content="GN" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="350,0,0,0" VerticalAlignment="Top"/>
+						<Button Content="An" Click="ShowAN" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
+						<Button Content="Cn" Click="ShowCN" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
+						<Button Content="Tn" Click="ShowTN" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
+						<Button Content="Gn" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
+
+						<!--<Button Content="nA" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="114,35,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>-->
+						<Button Content="AA" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,35,0,0" VerticalAlignment="Top"/>
+						<Button Content="CA" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,35,0,0" VerticalAlignment="Top"/>
+						<Button Content="TA" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,35,0,0" VerticalAlignment="Top"/>
+						<Button Content="GA" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,35,0,0" VerticalAlignment="Top"/>
+
+						<!--<Button Content="nC" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="114,70,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>-->
+						<Button Content="AC" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,70,0,0" VerticalAlignment="Top"/>
+						<Button Content="CC" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,70,0,0" VerticalAlignment="Top"/>
+						<Button Content="TC" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,70,0,0" VerticalAlignment="Top"/>
+						<Button Content="GC" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,70,0,0" VerticalAlignment="Top"/>
+
+						<!--<Button Content="nT" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="114,105,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>-->
+						<Button Content="AT" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,105,0,0" VerticalAlignment="Top"/>
+						<Button Content="CT" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,105,0,0" VerticalAlignment="Top"/>
+						<Button Content="TT" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,105,0,0" VerticalAlignment="Top"/>
+						<Button Content="GT" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,105,0,0" VerticalAlignment="Top"/>
+
+						<!--<Button Content="nG" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="114,140,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>-->
+						<Button Content="AG" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,140,0,0" VerticalAlignment="Top"/>
+						<Button Content="CG" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,140,0,0" VerticalAlignment="Top"/>
+						<Button Content="TG" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,140,0,0" VerticalAlignment="Top"/>
+						<Button Content="GG" Click="ShowGN" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,140,0,0" VerticalAlignment="Top"/>
 					</Grid>
 					<oxy:PlotView x:Name="OxyPlot" Model="{Binding SomeName}" VerticalAlignment="Top" Height="150" Grid.ColumnSpan="2" Margin="408,0,0,0"/>
 
