@@ -4,7 +4,7 @@ using System.Text;
 
 namespace POI_DNA_Analyzer
 {
-	internal class ResultSaver
+	internal class SequenceFinderResultSaver
 	{
 		public void Save(string countInfo, LinkedList<int> indexes)
 		{

@@ -4,7 +4,6 @@ using System.Drawing;
 using OxyPlot.Wpf;
 using OxyPlot.Axes;
 using OxyPlot.Legends;
-using OxyPlot.Annotations;
 
 namespace POI_DNA_Analyzer
 {
@@ -18,7 +17,8 @@ namespace POI_DNA_Analyzer
 			_plotView = plotView;
 			_model = new PlotModel { };
 
-			Legend legend = new Legend() {
+			Legend legend = new Legend()
+			{
 				LegendPlacement = LegendPlacement.Outside,
 				LegendPosition = LegendPosition.LeftMiddle,
 				LegendBackground = OxyColor.FromAColor(200, OxyColors.White),
@@ -102,7 +102,12 @@ namespace POI_DNA_Analyzer
 				xAxis.MinorStep = 1;
 				xAxis.LabelFormatter = value =>
 				{
-					return indexes[Convert.ToInt32(value)].ToString();
+					if (value >= indexes.Count || value < 0)
+						return "";
+
+					string result = indexes[Convert.ToInt32(value)].ToString();
+
+					return result;
 				};
 
 				_plotView.InvalidatePlot();

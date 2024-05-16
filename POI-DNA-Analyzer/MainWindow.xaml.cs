@@ -10,11 +10,11 @@ namespace POI_DNA_Analyzer
 		private ResultText _resultText;
 		private ListOfIndexes _listOfIndexes;
 		private SequencesFinder _sequencesFinder;
-		private DinucleotidesAnalyzer _dinucleotidesAnalzyer;
+		private DinucleotidesAnalyzer _dinucleotidesAnalyzer;
 		private OxyPlotProbabilityGraph _oxyPlotProbabilityGraph;
 
 		private string _filePath = "";
-		private string _currentNucleotide = "A";
+		private string _currentDinucleotide = "A";
 		private int _chunkSize;
 
 		public MainWindow()
@@ -24,7 +24,7 @@ namespace POI_DNA_Analyzer
 			_resultText = new ResultText(ResultText);
 			_listOfIndexes = new ListOfIndexes(List);
 			_sequencesFinder = new SequencesFinder();
-			_dinucleotidesAnalzyer = new DinucleotidesAnalyzer();
+			_dinucleotidesAnalyzer = new DinucleotidesAnalyzer();
 			_oxyPlotProbabilityGraph = new OxyPlotProbabilityGraph(OxyPlot);
 		}
 
@@ -44,7 +44,7 @@ namespace POI_DNA_Analyzer
 
 		private void SaveFileButtonClick(object sender, RoutedEventArgs e)
 		{
-			ResultSaver resultSaver = new ResultSaver();
+			SequenceFinderResultSaver resultSaver = new SequenceFinderResultSaver();
 			resultSaver.Save(ResultText.Text, _sequencesFinder.SequenceIndexes);
 		}
 
@@ -92,6 +92,13 @@ namespace POI_DNA_Analyzer
 
 		}
 
+		private void SaveDinucleotidesAnalyzerButtonClick(object sender, RoutedEventArgs e)
+		{
+			DinucleotidesAnalyzerResultSaver resultSaver = new DinucleotidesAnalyzerResultSaver(_dinucleotidesAnalyzer);
+
+			resultSaver.Save();
+		}
+
 		private void StartDinucleotidesAnalyzerButtonClick(object sender, RoutedEventArgs e)
 		{
 			int defaultChunkSize = 100;
@@ -105,18 +112,34 @@ namespace POI_DNA_Analyzer
 				_chunkSize = defaultChunkSize;
 			}
 
-			ShowNN();
+			ShowGraph();
 		}
 
-		private void ShowNN()
+		private void ShowGraph(object sender, RoutedEventArgs e)
+		{
+			_currentDinucleotide = ((Button)sender).Tag.ToString();
+			ShowGraph();
+		}
+
+		private void ShowGraph()
 		{
 			if (_fileStream == null)
 				return;
 
-			_dinucleotidesAnalzyer.Analyze(_fileStream, _chunkSize, SimilaritySlider.Value);
-
+			_dinucleotidesAnalyzer.Analyze(_fileStream, _chunkSize, SimilaritySlider.Value);
 			_oxyPlotProbabilityGraph.Clear();
 
+			if (_currentDinucleotide.Length == 1)
+				ShowNN();
+			else
+				ShowN();
+
+			_oxyPlotProbabilityGraph.Show();
+			OpenFile();
+		}
+
+		private void ShowNN()
+		{
 			List<System.Drawing.Color> listOfColors = new List<System.Drawing.Color>()
 			{
 				System.Drawing.Color.Red,
@@ -127,41 +150,19 @@ namespace POI_DNA_Analyzer
 
 			int i = 0;
 
-			foreach (string key in _dinucleotidesAnalzyer.DinucleotidesProbabilities.Keys.ToList())
+			foreach (string key in _dinucleotidesAnalyzer.DinucleotidesProbabilities.Keys.ToList())
 			{
-				if (key[0].ToString() == _currentNucleotide)
+				if (key[0].ToString() == _currentDinucleotide[0].ToString())
 				{
-					_oxyPlotProbabilityGraph.ProvideData(_dinucleotidesAnalzyer.Indexes, _dinucleotidesAnalzyer.DinucleotidesProbabilities[key], listOfColors[i], key);
+					_oxyPlotProbabilityGraph.ProvideData(_dinucleotidesAnalyzer.Indexes, _dinucleotidesAnalyzer.DinucleotidesProbabilities[key], listOfColors[i], key);
 					i++;
 				}
 			}
-
-			_oxyPlotProbabilityGraph.Show();
-			OpenFile();
 		}
 
-		private void ShowAN(object sender, RoutedEventArgs e)
+		private void ShowN()
 		{
-			_currentNucleotide = "A";
-			ShowNN();
-		}
-
-		private void ShowCN(object sender, RoutedEventArgs e)
-		{
-			_currentNucleotide = "C";
-			ShowNN();
-		}
-
-		private void ShowTN(object sender, RoutedEventArgs e)
-		{
-			_currentNucleotide = "T";
-			ShowNN();
-		}
-
-		private void ShowGN(object sender, RoutedEventArgs e)
-		{
-			_currentNucleotide = "G";
-			ShowNN();
+			_oxyPlotProbabilityGraph.ProvideData(_dinucleotidesAnalyzer.Indexes, _dinucleotidesAnalyzer.DinucleotidesProbabilities[_currentDinucleotide], System.Drawing.Color.Red, _currentDinucleotide);
 		}
 	}
 }

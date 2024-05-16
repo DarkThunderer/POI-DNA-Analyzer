@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 
 namespace POI_DNA_Analyzer
 {
@@ -27,10 +26,10 @@ namespace POI_DNA_Analyzer
 
 		public void Analyze(StreamReader fileStream, int chunkSize, double similarityCoefficient)
 		{
-			_lastIndex = 1;
 			ClearDictionary();
 			Indexes.Clear();
 			_lastMatrix.Clear();
+			_lastIndex = 1;
 
 			char[] buffer = new char[chunkSize];
 			int charsRead;
