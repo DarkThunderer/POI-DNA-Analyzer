@@ -6,16 +6,16 @@ namespace POI_DNA_Analyzer
     {
 		private ChunkAnalyzer _chunkAnalyzer;
 		private ChunkMatrixBuilder _chunkMatrixBuilder;
-		private MatrixComparator _matrixComparator;
+		private IMatrixComparator _matrixComparator;
 
 		private Dictionary<string, float> _lastMatrix = new Dictionary<string, float>();
 		private int _lastIndex;
 
-		public DinucleotidesAnalyzer() 
+		public DinucleotidesAnalyzer(IMatrixComparator matrixComparator) 
 		{
 			_chunkAnalyzer = new ChunkAnalyzer();
 			_chunkMatrixBuilder = new ChunkMatrixBuilder(_chunkAnalyzer);
-			_matrixComparator = new MatrixComparator();
+			_matrixComparator = matrixComparator;
 
 			InitializeDictionary();
 		}

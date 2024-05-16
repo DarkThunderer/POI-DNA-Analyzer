@@ -1,6 +1,6 @@
 ﻿namespace POI_DNA_Analyzer
 {
-	internal class MatrixComparator
+	internal class EuclideanDistanceMatrixComparator : IMatrixComparator
 	{
 		private List<float> _firstMatrixProbabilities = new List<float>();
 		private List<float> _secondMatrixProbabilities = new List<float>();

@@ -36,11 +36,11 @@ namespace POI_DNA_Analyzer
 
 			for (int i = 0; i < _dinucleotidesAnalyzer.Indexes.Count; i++)
 			{
-				string row = _dinucleotidesAnalyzer.Indexes[i].ToString() + ",";
+				string row = _dinucleotidesAnalyzer.Indexes[i].ToString();
 
 				foreach (string key in _dinucleotidesAnalyzer.DinucleotidesProbabilities.Keys)
 				{
-					row += _dinucleotidesAnalyzer.DinucleotidesProbabilities[key][i].ToString("0.00") + ",";
+					row += "," + _dinucleotidesAnalyzer.DinucleotidesProbabilities[key][i].ToString("0.00");
 				}
 
 				sb.AppendLine(row);
@@ -53,11 +53,11 @@ namespace POI_DNA_Analyzer
 
 		private string CreateHeader()
 		{
-			string header = "Chunk,";
+			string header = "Chunk";
 
 			foreach (string key in _dinucleotidesAnalyzer.DinucleotidesProbabilities.Keys.ToList())
 			{
-				header += key + ",";
+				header += "," + key;
 			}
 
 			return header;
@@ -71,7 +71,7 @@ namespace POI_DNA_Analyzer
 			{
 				isEmpty = _dinucleotidesAnalyzer.DinucleotidesProbabilities[key].Count == 0;
 
-				if (!isEmpty)
+				if (isEmpty == false)
 					return isEmpty;
 			}
 

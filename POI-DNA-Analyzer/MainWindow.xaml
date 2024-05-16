@@ -17,25 +17,65 @@
 				<Grid>
 					<Grid.RowDefinitions>
 					</Grid.RowDefinitions>
-
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-
-					<TextBox x:Name="PromptField" Margin="76,10,85,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" TextChanged="PromptChanged"/>
-
-					<TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Prompt:" VerticalAlignment="Top" Height="21" Width="61" FontSize="14"/>
-
-					<Button x:Name="EnterPrompt" Content="Find!" Click="EnterPromptButtonClick" Margin="0,10,39,0" VerticalAlignment="Top" Height="21" HorizontalAlignment="Right" Width="41"/>
-
-					<TextBlock x:Name="ResultText" TextWrapping="Wrap" Text="Result is gonna be here..." FontSize="14" FontFamily="Arial" TextTrimming="WordEllipsis" Margin="3,10,10,0" Height="21" VerticalAlignment="Top" Grid.Column="1"/>
-
-					<Button x:Name="SaveFileButton" Content="Save" Margin="0,0,10,10" Click="SaveFileButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>
-
-					<Button x:Name="ClearButton" Content="Clear" Click="ClearResultButtonClick" Margin="0,0,94,10" Height="29" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="79" Grid.Column="1"/>
-
-					<ListBox x:Name="List" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="3,36,10,44" Grid.Column="1"/>
+					<TextBox x:Name="PromptField" 
+						Margin="76,10,85,0" 
+						TextWrapping="Wrap" 
+						Text="" 
+						VerticalAlignment="Top" 
+						Height="21"/>
+					<TextBlock 
+						HorizontalAlignment="Left" 
+						Margin="10,10,0,0" 
+						TextWrapping="Wrap" 
+						Text="Prompt:" 
+						VerticalAlignment="Top" 
+						Height="21" 
+						Width="61" 
+						FontSize="14"/>
+					<Button x:Name="EnterPrompt" 
+						Content="Find!" 
+						Click="EnterPromptButtonClick" 
+						Margin="0,10,39,0" 
+						VerticalAlignment="Top" 
+						Height="21" 
+						HorizontalAlignment="Right" 
+						Width="41"/>
+					<TextBlock x:Name="ResultText" 
+						TextWrapping="Wrap" 
+						Text="Result is gonna be here..." 
+						FontSize="14" 
+						FontFamily="Arial" 
+						TextTrimming="WordEllipsis" 
+						Margin="3,10,10,0" 
+						Height="21" 
+						VerticalAlignment="Top" 
+						Grid.Column="1"/>
+					<Button x:Name="SaveFileButton" 
+						Content="Save" 
+						Margin="0,0,10,10" 
+						Click="SaveFileButtonClick" 
+						HorizontalAlignment="Right" 
+						Width="79" 
+						Height="29" 
+						VerticalAlignment="Bottom" 
+						Grid.Column="1"/>
+					<Button x:Name="ClearButton" 
+						Content="Clear" 
+						Click="ClearResultButtonClick" 
+						Margin="0,0,94,10" 
+						Height="29" 
+						VerticalAlignment="Bottom" 
+						HorizontalAlignment="Right" 
+						Width="79" 
+						Grid.Column="1"/>
+					<ListBox x:Name="List" 
+						d:ItemsSource="{d:SampleData ItemCount=0}" 
+						Margin="3,36,10,44" 
+						Grid.Column="1"/>
 				</Grid>
 			</TabItem>
 			<TabItem x:Name="DinucleotidesAnalyzerTap">
@@ -49,59 +89,102 @@
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-
-
-					<TextBlock x:Name="ChunkSize" Margin="10,10,0,0" TextWrapping="Wrap" Text="Chunk size:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="94"/>
-					<TextBox x:Name="ChunkSizeTextBox" Text="100" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="174"/>
-
-					<Button x:Name="StartButton" Content="Start" Margin="0,0,10,10" Click="StartDinucleotidesAnalyzerButtonClick" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Bottom" Grid.Column="1" />
-					<Button x:Name="SaveDinucleotidesAnalyzer" Click="SaveDinucleotidesAnalyzerButtonClick" Content="Save" Margin="0,0,94,10" Height="29" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="79" Grid.Column="1" />
-					<Slider x:Name="SimilaritySlider" Maximum="100" Value="80" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Margin="150,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
-					<TextBox HorizontalAlignment="Left" Margin="329,37,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SimilaritySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="43"/>
-					<TextBlock Margin="10,36,0,0" TextWrapping="Wrap" Text="Similarity coefficient:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="140"/>
-
-					<!--<TextBox Margin="150,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" TextChanged="SavePathChanged" HorizontalAlignment="Left" Width="148"/>
-					<TextBlock Margin="10,104,0,0" TextWrapping="Wrap" Text="Save intermediate results:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="162"/>
-					<CheckBox Margin="177,106,0,0" VerticalAlignment="Top" Height="17" Checked="CheckboxChecked" Padding="0,-1,0,0" HorizontalAlignment="Left" Width="17"/>
-					<Button Content="..." Margin="303,76,0,0" VerticalAlignment="Top" Height="21" HorizontalAlignment="Left" Width="21"/>
-					<TextBlock Margin="10,76,0,0" TextWrapping="Wrap" Text="Save path:" VerticalAlignment="Top" Height="21" FontSize="14" HorizontalAlignment="Left" Width="134"/>
-
-					<ProgressBar x:Name="DinucleotidesAnalyzerProgressBar" Margin="106,0,106,10" Height="29" VerticalAlignment="Bottom" Grid.Column="1"/>-->
-
+					<TextBlock x:Name="ChunkSize" 
+						Margin="10,10,0,0" 
+						TextWrapping="Wrap" 
+						Text="Chunk size:"
+						VerticalAlignment="Top" 
+						Height="21" 
+						FontSize="14" 
+						HorizontalAlignment="Left" 
+						Width="94"/>
+					<TextBox x:Name="ChunkSizeTextBox" 
+						Text="100" Margin="150,10,0,0" 
+						TextWrapping="Wrap" 
+						VerticalAlignment="Top" 
+						Height="21" HorizontalAlignment="Left" 
+						Width="174"/>
+					<Button x:Name="StartButton" 
+						Content="Start" Margin="0,0,10,10" 
+						Click="StartDinucleotidesAnalyzerButtonClick"
+						HorizontalAlignment="Right" 
+						Width="79" 
+						Height="29"
+						VerticalAlignment="Bottom"
+						Grid.Column="1" />
+					<Button x:Name="SaveDinucleotidesAnalyzer" 
+						Click="SaveDinucleotidesAnalyzerButtonClick" 
+						Content="Save" 
+						Margin="0,0,94,10" 
+						Height="29" 
+						VerticalAlignment="Bottom" 
+						HorizontalAlignment="Right" 
+						Width="79" 
+						Grid.Column="1" />
+					<Slider x:Name="SimilaritySlider" 
+						Maximum="100" 
+						Value="80" 
+						TickPlacement="BottomRight" 
+						TickFrequency="1" 
+						IsSnapToTickEnabled="True" 
+						Margin="150,38,0,0" 
+						VerticalAlignment="Top" 
+						HorizontalAlignment="Left"
+						Width="174"/>
+					<TextBox 
+						HorizontalAlignment="Left" 
+						Margin="329,37,0,0" 
+						TextWrapping="Wrap" 
+						Text="{Binding ElementName=SimilaritySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
+						VerticalAlignment="Top" 
+						Width="43"/>
+					<TextBlock 
+						Margin="10,36,0,0" 
+						TextWrapping="Wrap" 
+						Text="Similarity coefficient:" 
+						VerticalAlignment="Top" 
+						Height="21" 
+						FontSize="14" 
+						HorizontalAlignment="Left" 
+						Width="140"/>
 					<Grid Margin="10,155,0,0" Grid.Column="1">
 						<Button Content="An" Click="ShowGraph" Tag="A" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
 						<Button Content="Cn" Click="ShowGraph" Tag="C" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
 						<Button Content="Tn" Click="ShowGraph" Tag="T" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
 						<Button Content="Gn" Click="ShowGraph" Tag="G" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,0,0,0" VerticalAlignment="Top" Background="#FFB9B9B9"/>
-
 						<Button Content="AA" Click="ShowGraph" Tag="AA" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,35,0,0" VerticalAlignment="Top"/>
 						<Button Content="CA" Click="ShowGraph" Tag="CA" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,35,0,0" VerticalAlignment="Top"/>
 						<Button Content="TA" Click="ShowGraph" Tag="TA" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,35,0,0" VerticalAlignment="Top"/>
 						<Button Content="GA" Click="ShowGraph" Tag="GA" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,35,0,0" VerticalAlignment="Top"/>
-
 						<Button Content="AC" Click="ShowGraph" Tag="AC" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,70,0,0" VerticalAlignment="Top"/>
 						<Button Content="CC" Click="ShowGraph" Tag="CC" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,70,0,0" VerticalAlignment="Top"/>
 						<Button Content="TC" Click="ShowGraph" Tag="TC" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,70,0,0" VerticalAlignment="Top"/>
 						<Button Content="GC" Click="ShowGraph" Tag="GC" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,70,0,0" VerticalAlignment="Top"/>
-
 						<Button Content="AT" Click="ShowGraph" Tag="AT" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,105,0,0" VerticalAlignment="Top"/>
 						<Button Content="CT" Click="ShowGraph" Tag="CT" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,105,0,0" VerticalAlignment="Top"/>
 						<Button Content="TT" Click="ShowGraph" Tag="TT" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,105,0,0" VerticalAlignment="Top"/>
 						<Button Content="GT" Click="ShowGraph" Tag="GT" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,105,0,0" VerticalAlignment="Top"/>
-
 						<Button Content="AG" Click="ShowGraph" Tag="AG" HorizontalAlignment="Left" Height="30" Width="30" Margin="149,140,0,0" VerticalAlignment="Top"/>
 						<Button Content="CG" Click="ShowGraph" Tag="CG" HorizontalAlignment="Left" Height="30" Width="30" Margin="184,140,0,0" VerticalAlignment="Top"/>
 						<Button Content="TG" Click="ShowGraph" Tag="TG" HorizontalAlignment="Left" Height="30" Width="30" Margin="219,140,0,0" VerticalAlignment="Top"/>
 						<Button Content="GG" Click="ShowGraph" Tag="GG" HorizontalAlignment="Left" Height="30" Width="30" Margin="254,140,0,0" VerticalAlignment="Top"/>
 					</Grid>
-					<!--<ScrollViewer x:Name="scrollViewer" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" Height="150" Grid.ColumnSpan="2" Margin="408,0,0,0">
-						<oxy:PlotView x:Name="OxyPlot" Model="{Binding SomeName}"/>
-					</ScrollViewer>-->
-					<oxy:PlotView x:Name="OxyPlot" Model="{Binding SomeName}" VerticalAlignment="Top" Height="150" Grid.ColumnSpan="2" Margin="408,0,0,0"/>
+					<oxy:PlotView x:Name="OxyPlot" 
+						Model="{Binding SomeName}" 
+						VerticalAlignment="Top" 
+						Height="150" 
+						Grid.ColumnSpan="2" 
+						Margin="408,0,0,0"/>
 				</Grid>
 			</TabItem>
 		</TabControl>
-
-		<Button x:Name="OpenFileButton" Content="File" Click="OpenFileButtonClick" Margin="13,0,0,13" HorizontalAlignment="Left" Width="79" Height="29" VerticalAlignment="Bottom"/>
+		<Button x:Name="OpenFileButton" 
+			Content="File" 
+			Click="OpenFileButtonClick" 
+			Margin="13,0,0,13" 
+			HorizontalAlignment="Left" 
+			Width="79" 
+			Height="29" 
+			VerticalAlignment="Bottom"/>
 	</Grid>
 </Window>
