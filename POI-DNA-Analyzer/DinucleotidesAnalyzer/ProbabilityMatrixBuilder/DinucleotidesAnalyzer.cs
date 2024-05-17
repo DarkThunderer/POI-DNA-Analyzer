@@ -22,7 +22,7 @@ namespace POI_DNA_Analyzer
 
 		public Dictionary<string, List<double>> DinucleotidesProbabilities { get; private set; } = new Dictionary<string, List<double>>();
 
-		public List<int> Indexes { get; private set; } = new List<int> { };
+		public List<int> Indexes { get; private set; } = new List<int>();
 
 		public void Analyze(StreamReader fileStream, int chunkSize, double similarityCoefficient)
 		{
