@@ -25,7 +25,7 @@
 				['AN'] = new Dictionary<string, float>(),
 				['TN'] = new Dictionary<string, float>(),
 				['GN'] = new Dictionary<string, float>(),
-				['CN'] = new Dictionary<string, float>(),
+				['CN'] = new Dictionary<string, float>()
 			};
 			
 			foreach (var item in inputMatrix)
