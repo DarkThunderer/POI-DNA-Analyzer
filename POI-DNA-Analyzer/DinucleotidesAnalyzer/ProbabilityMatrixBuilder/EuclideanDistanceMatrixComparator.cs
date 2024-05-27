@@ -10,7 +10,7 @@
 			_firstMatrixProbabilities = GetDataFromMatrix(firstMatrix);
 			_secondMatrixProbabilities = GetDataFromMatrix(secondMatrix);
 
-			double similarity = CalculateEuclideanDistance(_firstMatrixProbabilities, _secondMatrixProbabilities);
+			double similarity = CalculateCosineSimilarity(_firstMatrixProbabilities, _secondMatrixProbabilities);
 
 			if (similarity >= similarityCoefficient)
 				return true;
