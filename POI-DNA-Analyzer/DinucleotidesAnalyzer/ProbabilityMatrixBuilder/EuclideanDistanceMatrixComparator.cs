@@ -2,8 +2,8 @@
 {
 	internal class EuclideanDistanceMatrixComparator : IMatrixComparator
 	{
-		private List<float> _firstMatrixProbabilities = new List<float>();
-		private List<float> _secondMatrixProbabilities = new List<float>();
+		private var _firstMatrixProbabilities;
+		private var _secondMatrixProbabilities;
 
 		public bool IsSimilar(Dictionary<string, float> firstMatrix, Dictionary<string, float> secondMatrix, double similarityCoefficient)
 		{
@@ -18,32 +18,53 @@
 				return false;
 		}
 
-		private List<float> GetDataFromMatrix(Dictionary<string, float> inputMatrix)
+		private Dictionary<string, Dictionary<string, float>> GetDataFromMatrix(Dictionary<string, float> inputMatrix)
 		{
-			List<float> result = new List<float>();
-
-			foreach (string key in inputMatrix.Keys.ToList())
+			var result = new Dictionary<string, Dictionary<string, float>>() 
 			{
-				result.Add(inputMatrix[key]);
+				['AN'] = new Dictionary<string, float>(),
+				['TN'] = new Dictionary<string, float>(),
+				['GN'] = new Dictionary<string, float>(),
+				['CN'] = new Dictionary<string, float>(),
+			};
+			
+			foreach (var item in inputMatrix)
+			{
+				switch (item.Key)
+                {
+					case 'AA' || 'AT' || 'AG' || 'AC':
+						result['AN'].Add(item.Key, Math.Round(item.Value * 100, 2));
+					case 'TA' || 'TT' || 'TG' || 'TC':
+						result['TN'].Add(item.Key, Math.Round(item.Value * 100, 2));
+					case 'GA' || 'GT' || 'GG' || 'GC':
+						result['GN'].Add(item.Key, Math.Round(item.Value * 100, 2));
+					case 'CA' || 'CT' || 'CG' || 'CC':
+						result['CN'].Add(item.Key, Math.Round(item.Value * 100, 2));
+				}
 			}
 
 			return result;
 		}
 
-		private double CalculateEuclideanDistance(List<float> firstMatrix, List<float> secondMatrix)
+		private double CalculateCosineSimilarity(Dictionary<string, Dictionary<string, float>> firstMatrix, Dictionary<string, Dictionary<string, float>> secondMatrix)
 		{
-			if (firstMatrix.Count != secondMatrix.Count)
-				throw new ArgumentException("Arrays must be of the same length.");
-
-			double sumOfSquares = 0;
-
-			for (int i = 0; i < firstMatrix.Count; i++)
+			float similarity = 0;
+			foreach (var vector in firstMatrix) 
 			{
-				double diff = firstMatrix[i]*100 - secondMatrix[i]*100;
-				sumOfSquares += diff * diff;
+				float innerProduct = 0;
+				float firstNorm = 0;
+				float secondNorm = 0;
+				foreach (var axis in vector.Value.Keys)
+                {
+					innerProduct += vector.Value[axis] * secondMatrix[vector.Key][axis];
+					firstNorm += Math.Pow(vector.Value[axis], 2);
+					secondNorm += Math.Pow(secondMatrix[vector.Key][axis], 2);
+				}
+				firstNorm = Math.Sqrt(firstNorm);
+				secondNorm = Math.Sqrt(secondNorm);
+				similarity += innerProduct / (firstNorm * secondNorm);
 			}
-
-			return Math.Sqrt(sumOfSquares);
+			return similarity / 4;
 		}
 	}
 }
